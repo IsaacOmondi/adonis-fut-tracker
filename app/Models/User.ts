@@ -13,6 +13,15 @@ export default class User extends BaseModel {
   public password: string
 
   @column()
+  public username: string
+
+  @column()
+  public team_name: string
+
+  @column({ serializeAs: null })
+  public role: string
+
+  @column({ serializeAs: null })
   public rememberMeToken?: string
 
   @column.dateTime({ autoCreate: true })

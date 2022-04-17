@@ -8,7 +8,10 @@ export default class UsersSchema extends BaseSchema {
       table.increments('id').primary()
       table.string('email', 255).notNullable()
       table.string('password', 180).notNullable()
+      table.string('username', 30).notNullable
       table.string('remember_me_token').nullable()
+      table.string('team_name').nullable()
+      table.enum('role', ['admin', 'default']).notNullable().defaultTo('default')
 
       /**
        * Uses timestampz for PostgreSQL and DATETIME2 for MSSQL
@@ -18,7 +21,7 @@ export default class UsersSchema extends BaseSchema {
     })
   }
 
-  public async down() {
+  public async down () {
     this.schema.dropTable(this.tableName)
   }
 }

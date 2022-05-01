@@ -28,5 +28,9 @@ Route.group(() => {
   Route.group(() => {
     Route.post('/login', 'AuthController.login')
   }).prefix('auth')
-  Route.resource('/users', 'UsersController')
+  Route.resource('/users', 'UsersController').middleware({
+    index: 'auth',
+    show: 'auth',
+    destroy: 'auth',
+  })
 }).prefix('v1')
